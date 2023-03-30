@@ -17,9 +17,10 @@ function AllTheBooks() {
   return (
     <Container>
       <Row className="booksRow">
+        <h2 className="text-bg-info sticky-top">ALL BOOKS</h2>
         {allGenres.map((book, n) => {
           return (
-            <Col key={book.n} xs={12} md={4} lg={3}>
+            <Col key={"allbs-" + n} xs={12} md={4} lg={3}>
               <Card style={{ width: "18rem" }}>
                 <Card.Img variant="top" src={book.img} />
                 <Card.Body>
