@@ -14,7 +14,7 @@ class BookList extends Component {
   render() {
     return (
       <Container>
-        <Row className="visualizer">
+        <Row className="visualizer listRow">
           <h2 className="text-bg-info sticky-top">TOP FANTASY</h2>
           <form
             onSubmit={(ev) => {
@@ -40,7 +40,12 @@ class BookList extends Component {
           {arrayX.map((el, n) => {
             return (
               <Col key={"book-" + n} xs={12} md={4} lg={3}>
-                <SingleBook key={"book-" + n} img={el.img} title={el.title} />
+                <SingleBook
+                  key={"book-" + n}
+                  img={el.img}
+                  title={el.title}
+                  asin={el.asin}
+                />
               </Col>
             );
           })}

@@ -6,6 +6,7 @@
   height: 70vh;
 }
 
-.booksRow .card {
+.booksRow .card,
+.listRow .card {
   height: 100%;
 }
