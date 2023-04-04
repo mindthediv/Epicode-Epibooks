@@ -11,22 +11,35 @@ class SingleBook extends Component {
   getSelected = (e) => {
     if (this.state.selected === false) {
       this.setState({ selected: true });
-      e.target.className = "border border-3 border-danger";
     } else {
       this.setState({ selected: false });
-      e.target.className = "border-0";
     }
   };
 
   render() {
     return (
-      <div className="h-100" onClick={this.getSelected}>
+      <div
+        className={
+          this.state.selected
+            ? "h-100 border border-3 border-danger"
+            : "h-100 border-0"
+        }
+      >
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={this.props.img} />
+          <Card.Img
+            variant="top"
+            src={this.props.img}
+            onClick={this.getSelected}
+          />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
           </Card.Body>
-          <CommentArea selected={this.state.selected} asin={this.state.asin} />
+          {this.state.selected && (
+            <CommentArea
+              selected={this.state.selected}
+              asin={this.state.asin}
+            />
+          )}
         </Card>
       </div>
     );

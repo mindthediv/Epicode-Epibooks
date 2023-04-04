@@ -11,7 +11,7 @@ class CommentsList extends Component {
       <ul>
         {this.props.comments.map((el, n) => {
           return (
-            <li key={el.elementId + n} onClick={this.showComment(el)}>
+            <li key={el.elementId + n} onClick={() => this.showComment(el)}>
               {el.comment} - {el.rate} | {el.elementId}
             </li>
           );

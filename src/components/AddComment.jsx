@@ -4,9 +4,15 @@ import Form from "react-bootstrap/Form";
 const API_URL = "https://striveschool-api.herokuapp.com/api/comments/";
 
 class AddComment extends Component {
-  postComment = async () => {
-    this.setState({ elementId: this.props.asin });
-    let response = await fetch(API_URL + this.props.asin, {
+  state = {
+    comment: "",
+    rate: "",
+    elementId: this.props.asin,
+  };
+
+  postComment = async (e) => {
+    e.preventDefault();
+    let response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,12 +26,13 @@ class AddComment extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.postComment}>
+      <Form onSubmit={(e) => this.postComment(e)}>
         <Form.Group className="mb-3">
           <Form.Label>Comment</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your comment"
+            value={this.state.comment}
             onChange={(e) => this.setState({ comment: e.target.value })}
           />
         </Form.Group>
@@ -38,6 +45,7 @@ class AddComment extends Component {
             max={5}
             placeholder="0 - 5"
             onChange={(e) => this.setState({ rate: e.target.value })}
+            value={this.state.rate}
           />
         </Form.Group>
         <Button variant="primary" type="submit">

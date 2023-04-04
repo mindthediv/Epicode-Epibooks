@@ -5,6 +5,10 @@ import AddComment from "./AddComment";
 const API_URL = "https://striveschool-api.herokuapp.com/api/comments/";
 
 class CommentArea extends Component {
+  state = {
+    comments: [],
+  };
+
   getComments = async () => {
     try {
       let response = await fetch(API_URL + this.props.asin, {
@@ -28,12 +32,10 @@ class CommentArea extends Component {
 
   render() {
     return (
-      this.props.selected && (
-        <div>
-          <AddComment asin={this.props.asin} />{" "}
-          <CommentsList comments={this.state.comments} />
-        </div>
-      )
+      <div>
+        <AddComment asin={this.props.asin} />{" "}
+        <CommentsList comments={this.state.comments} />
+      </div>
     );
   }
 }
